@@ -1,6 +1,6 @@
 package com.jpmc.midascore.service.impl;
 
-import com.jpmc.midascore.data.model.CustomerRecord;
+import com.jpmc.midascore.data.entity.UserRecord;
 import com.jpmc.midascore.repository.UserRepository;
 import com.jpmc.midascore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +15,8 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public CustomerRecord getUserByID(Long userID) {
-        Optional<CustomerRecord> optionalUser = userRepository.findById(userID);
+    public UserRecord getUserByID(Long userID) {
+        Optional<UserRecord> optionalUser = userRepository.findById(userID);
 
         return optionalUser.orElse(null);
     }

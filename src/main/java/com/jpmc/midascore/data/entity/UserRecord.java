@@ -1,10 +1,10 @@
-package com.jpmc.midascore.data.model;
+package com.jpmc.midascore.data.entity;
 
 import jakarta.persistence.*;
 
 @Table(name="users")
 @Entity
-public class CustomerRecord {
+public class UserRecord {
 
     @Id
     @GeneratedValue()
@@ -16,10 +16,10 @@ public class CustomerRecord {
     @Column(nullable = false)
     private float balance;
 
-    protected CustomerRecord() {
+    protected UserRecord() {
     }
 
-    public CustomerRecord(String name, float balance) {
+    public UserRecord(String name, float balance) {
         this.name = name;
         this.balance = balance;
     }

@@ -1,8 +1,8 @@
 package com.jpmc.midascore.repository;
 
-import com.jpmc.midascore.data.model.CustomerRecord;
+import com.jpmc.midascore.data.entity.UserRecord;
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends CrudRepository<CustomerRecord, Long> {
-    CustomerRecord findById(long id);
+public interface UserRepository extends CrudRepository<UserRecord, Long> {
+    UserRecord findById(long id);
 }
