@@ -1,7 +1,7 @@
 package com.jpmc.midascore.kafka;
 
 import com.jpmc.midascore.utility.StorageHandler;
-import com.jpmc.midascore.entity.UserRecord;
+import com.jpmc.midascore.data.model.CustomerRecord;
 import com.jpmc.midascore.foundation.Incentive;
 import com.jpmc.midascore.foundation.Transaction;
 import com.jpmc.midascore.payload.TransactionResponse;
@@ -48,8 +48,8 @@ public class KafkaListener {
             }
 
             // Step 3: Fetch sender and recipient from the database
-            UserRecord sender = userService.getUserByID(transaction.getSenderId());
-            UserRecord recipient = userService.getUserByID(transaction.getRecipientId());
+            CustomerRecord sender = userService.getUserByID(transaction.getSenderId());
+            CustomerRecord recipient = userService.getUserByID(transaction.getRecipientId());
 
             if (sender == null || recipient == null) {
                 LOGGER.error("Sender or recipient not found. Sender ID: " + transaction.getSenderId() + ", Recipient ID: " + transaction.getRecipientId());

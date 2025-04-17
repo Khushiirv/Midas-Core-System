@@ -1,6 +1,6 @@
 package com.jpmc.midascore.kafka;
 
-import com.jpmc.midascore.entity.UserRecord;
+import com.jpmc.midascore.data.model.CustomerRecord;
 import com.jpmc.midascore.foundation.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,16 +14,16 @@ import org.springframework.stereotype.Service;
 public class TransactionProducer {
     private static final Logger LOGGER = LoggerFactory.getLogger(TransactionProducer.class);
 
-    private KafkaTemplate<String, UserRecord> kafkaTemplate;
+    private KafkaTemplate<String, CustomerRecord> kafkaTemplate;
 
-    public TransactionProducer(KafkaTemplate<String, UserRecord> kafkaTemplate) {
+    public TransactionProducer(KafkaTemplate<String, CustomerRecord> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendUser(UserRecord user){
+    public void sendUser(CustomerRecord user){
         LOGGER.info(String.format("User message sent: %s", user.toString()));
 
-        Message<UserRecord> userMessage = MessageBuilder
+        Message<CustomerRecord> userMessage = MessageBuilder
                 .withPayload(user)
                 .setHeader(KafkaHeaders.TOPIC, "users")
                 .build();

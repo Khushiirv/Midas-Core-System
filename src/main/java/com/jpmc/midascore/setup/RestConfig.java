@@ -1,4 +1,4 @@
-package com.jpmc.midascore.config;
+package com.jpmc.midascore.setup;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

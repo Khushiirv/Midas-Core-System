@@ -1,6 +1,6 @@
 package com.jpmc.midascore.service.impl;
 
-import com.jpmc.midascore.entity.UserRecord;
+import com.jpmc.midascore.data.model.CustomerRecord;
 import com.jpmc.midascore.foundation.Transaction;
 import com.jpmc.midascore.payload.TransactionResponse;
 import com.jpmc.midascore.repository.UserRepository;
@@ -21,10 +21,10 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public TransactionResponse transfer(Long senderID, Long receiverID, Float amount) {
 
-        UserRecord sender = null;
-        UserRecord recipient = null;
-        Optional<UserRecord> optSender = userRepository.findById(senderID);
-        Optional<UserRecord> optRecipient = userRepository.findById(receiverID);
+        CustomerRecord sender = null;
+        CustomerRecord recipient = null;
+        Optional<CustomerRecord> optSender = userRepository.findById(senderID);
+        Optional<CustomerRecord> optRecipient = userRepository.findById(receiverID);
 
         if(optSender.isEmpty() && optRecipient.isEmpty()) {
             return new TransactionResponse(null, true);
@@ -53,12 +53,12 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public Float deposit(UserRecord receiver, Float amount) {
+    public Float deposit(CustomerRecord receiver, Float amount) {
         return receiver.getBalance() + amount;
     }
 
     @Override
-    public Float withdraw(UserRecord sender, Float amount) {
+    public Float withdraw(CustomerRecord sender, Float amount) {
         return sender.getBalance() - amount;
     }
 }

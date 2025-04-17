@@ -1,7 +1,7 @@
 package com.jpmc.midascore.service;
 
-import com.jpmc.midascore.entity.UserRecord;
+import com.jpmc.midascore.data.model.CustomerRecord;
 
 public interface UserService {
-    UserRecord getUserByID(Long userID);
+    CustomerRecord getUserByID(Long userID);
 }
